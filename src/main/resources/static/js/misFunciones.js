@@ -600,7 +600,7 @@ function eliminarRes(idReservation){
         });}
     function Reporte1(){
     $.ajax({    
-		url : 'http://150.136.61.110:8080/api/Reservation/report-status',
+		url : 'http://144.22.58.129:8080/api/Reservation/report-status',
 		type : 'GET',
 		dataType : 'json',
 		contentType: "application/json; charset=utf-8",
@@ -631,7 +631,7 @@ function eliminarRes(idReservation){
 
 function Cargar2(){
 	$.ajax({    
-		url : 'http://150.136.61.110:8080/api/Reservation/report-dates/2020-01-01/2020-12-31',
+		url : 'http://144.22.58.129:8080/api/Reservation/report-dates/2020-01-01/2020-12-31',
 		type : 'GET',
 		dataType : 'json',
 		contentType: "application/json; charset=utf-8",
@@ -663,7 +663,7 @@ function Cargar2(){
     }
 function Cargar3(){
 	$.ajax({    		  
-		url : 'http://150.136.61.110:8080/api/Reservation/report-clients',
+		url : 'http://144.22.58.129:8080/api/Reservation/report-clients',
 		type : 'GET',
 		dataType : 'json',
 		contentType: "application/json; charset=utf-8",
