@@ -36,11 +36,6 @@ public class MessageController {
     public Message save(@RequestBody Message mensaje){
         return messageService.save(mensaje);
     }
-    @PutMapping("/update")//NO ES NECESARIO EN EL RETO PERO IGUAL LO HICE
-    @ResponseStatus(HttpStatus.CREATED)
-    public Message update(@RequestBody Message mensaje){
-        return messageService.update(mensaje);
-    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

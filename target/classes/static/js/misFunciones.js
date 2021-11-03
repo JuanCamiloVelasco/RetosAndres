@@ -1,4 +1,4 @@
-//METODOS GET POST PUT Y DELETE DE LA TABLA SALONES AS PARTYROOM
+//METODOS Cabin
 function Cargar(){
 	$.ajax({    
 		url : 'http://144.22.58.129:8080/api/Cabin/all',
@@ -17,7 +17,6 @@ function Cargar(){
 			Tablaprin += '<th> ROOMS </th>';
 			Tablaprin += '<th> NAME </th>';
 			Tablaprin += '<th> DESCRIPCION </th>';
-//			Tablaprin += '<th> CATEGORIA </th>';
 			Tablaprin += '</tr>';
 			Tablaprin += '</thead>';
 			for (i=0; i<respuesta.length; i++){
@@ -28,7 +27,6 @@ function Cargar(){
 				Tablaprin += '<td>'+ respuesta[i].rooms+ '</td>'; 		
 				Tablaprin += '<td>'+ respuesta[i].name+ '</td>'; 						 						 
 				Tablaprin += '<td>'+ respuesta[i].description+ '</td>';
-//                                Tablaprin += '<td>'+ respuesta[i].category+ '</td>';
 				Tablaprin += '<td><button onclick="editarRegistro('+respuesta[i].id+')">Detalle</button>';
 				Tablaprin += '<td><button onclick="Eliminar('+respuesta[i].id+')">Eliminar</button>';	
 				Tablaprin += '</tr>';
@@ -47,8 +45,6 @@ function ingresarDatos(){
 		rooms:$("#rooms").val(),		
 		name:$("#name").val(),
                 description:$("#description").val()
-                    
-//                category:$("#category").val()
 	};
 	if (datos.brand=='' || datos.rooms=='' || datos.name=='' || datos.description==''){
 		alert("Todos los campos son obligatorios");
@@ -84,7 +80,6 @@ function editarRegistro (id){
 			$("#rooms").val(respuesta.rooms);			
 			$("#name").val(respuesta.name);
 			$("#description").val(respuesta.description);
-//                        $("#category").val(respuesta.category);
 			$("#id").attr('disabled', true);
 	},
     error : function(xhr, status) {
@@ -99,7 +94,6 @@ function actualizar(){
 		rooms:$("#rooms").val(),		
 		name:$("#name").val(),
                 description:$("#description").val()
-//                category:$("#category").val()
 	};
 	if (datos.brand=='' || datos.rooms=='' || datos.name=='' || datos.description==''){
 		alert("Todos los campos son obligatorios");
@@ -145,7 +139,6 @@ function limpiarCampos(){
         $("#id").val(''),
         $("#brand").val(''),
         $("#rooms").val(''),
-//        $("#category").val(''),
         $("#name").val(''),
         $("#description").val('')
 }
@@ -154,7 +147,7 @@ function besbloquearM(){
 	$("#messageText").attr('disabled', false);
 	limpiarCamposM();
 }
-//METODOS GET POST PUT Y DELETE DE LA TABLA CLIENTES
+//METODOS CLIENTES
 function CargarC(){
 	$.ajax({    
 		url : 'http://144.22.58.129:8080/api/Client/all',
@@ -296,7 +289,7 @@ function limpiarCamposC(){
 function besbloquearC(){
 	$("#id").attr('disabled', false);
 }
-//METODOS GET POST PUT Y DELETE DE LA TABLA MENSAJES
+//METODOS MENSAJES
 function CargarM(){
 	$.ajax({    
 		url : 'http://144.22.58.129:8080/api/Message/all',
@@ -312,17 +305,13 @@ function CargarM(){
 			Tablaprin += '<tr>';
 			Tablaprin += '<th> ID </th>';
 			Tablaprin += '<th> MENSAJE </th>';
-//			Tablaprin += '<th> PARTYROOM </th>';
-//			Tablaprin += '<th> CLIENT </th>';
 			Tablaprin += '</tr>';
 			Tablaprin += '</thead>';
 			for (i=0; i<respuesta.length; i++){
 				Tablaprin += '<tbody>';
 				Tablaprin += '<tr>';
 				Tablaprin += '<td>'+ respuesta[i].idMessage+ '</td>'; 		
-				Tablaprin += '<td>'+ respuesta[i].messageText+ '</td>'; 				 
-//				Tablaprin += '<td>'+ respuesta[i].partyroom+ '</td>'; 				 
-//				Tablaprin += '<td>'+ respuesta[i].client+ '</td>'; 				 
+				Tablaprin += '<td>'+ respuesta[i].messageText+ '</td>'; 				 				 
 				Tablaprin += '<td><button onclick="editarRegistroM('+respuesta[i].idMessage+')">Detalle</button>';
 				Tablaprin += '<td><button onclick="eliminarM('+respuesta[i].idMessage+')">Eliminar</button>';	
 				Tablaprin += '</tr>';	
@@ -337,8 +326,6 @@ function ingresarDatosM(){
 	var datos={
 		idMessage:$("#idMessage").val(),
 		messageText:$("#messageText").val()
-//		partyroom:$("#partyroom").val(),
-//		client:$("#client").val()
 	};
 	if (datos.messagetext=='' || datos.partyroom=='' || datos.client==''){
 		alert("Todos los campos son obligatorios");
@@ -370,8 +357,6 @@ function editarRegistroM(idMessage){
 		console.log(respuesta); 
 			$("#idMessage").val(respuesta.idMessage);
 			$("#messageText").val(respuesta.messageText);
-//			$("#partyroom").val(respuesta.partyroom);
-//			$("#client").val(respuesta.client);
 			$("#idMessage").attr('disabled', true);
 			$("#messageText").attr('disabled', true);
 	},
@@ -404,7 +389,7 @@ function besbloquearM(){
 	limpiarCamposM();
 }
 
-//METODOS GET POST PUT Y DELETE DE LA TABLA CATEGORY
+//METODOS CATEGORY
 function CargarCat(){
 	$.ajax({    
 		url : 'http://144.22.58.129:8080/api/Category/all',
@@ -534,7 +519,7 @@ function limpiarCamposCat(){
         $("#description").val('')
 }
 
-//METODOS GET POST PUT Y DELETE DE LA TABLA Reservas
+//METODOS Reservas
 function CargarRes(){
 	$.ajax({    
 		url : 'http://144.22.58.129:8080/api/Reservation/all',
@@ -551,9 +536,6 @@ function CargarRes(){
 			Tablaprin += '<th> ID </th>';
 			Tablaprin += '<th> FECHA INICIO </th>';
 			Tablaprin += '<th> FECHA DEVOLUCION </th>';
-//			Tablaprin += '<th> PARTYROOM </th>';
-//			Tablaprin += '<th> CLIENT </th>';
-//			Tablaprin += '<th> SCORE </th>';
 			Tablaprin += '</tr>';
 			Tablaprin += '</thead>';
 			for (i=0; i<respuesta.length; i++){
@@ -562,10 +544,6 @@ function CargarRes(){
 				Tablaprin += '<td>'+ respuesta[i].idReservation+ '</td>';
                                 Tablaprin += '<td>'+ respuesta[i].startDate+ '</td>';						 						 
 				Tablaprin += '<td>'+ respuesta[i].devolutionDate+ '</td>';
-//				Tablaprin += '<td>'+ respuesta[i].partyroom+ '</td>';
-//				Tablaprin += '<td>'+ respuesta[i].client+ '</td>';
-//				Tablaprin += '<td>'+ respuesta[i].score+ '</td>';
-//				Tablaprin += '<td><button onclick="editarRegistroRes('+respuesta[i].idReservation+')">Detalle</button>';
 				Tablaprin += '<td><button onclick="eliminarRes('+respuesta[i].idReservation+')">Eliminar</button>';	
 				Tablaprin += '</tr>';
 				Tablaprin += '</tbody>';
@@ -581,9 +559,6 @@ function ingresarDatosRes(){
 		idReservation:$("#idReservation").val(),		
 		startDate:$("#startDate").val(),
                 devolutionDate:$("#devolutionDate").val()
-//                partyroom:$("#partyroom").val(),
-//                client:$("#client").val(),
-//                score:$("#score").val()
 	};
 	if (datos.startDate=='' || datos.devolutionDate=='' || datos.partyroom=='' || datos.client=='' || datos.score==''){
 		alert("Todos los campos son obligatorios");
@@ -623,16 +598,115 @@ function eliminarRes(idReservation){
                 }
             }
         });}
+    function Reporte1(){
+    $.ajax({    
+		url : 'http://150.136.61.110:8080/api/Reservation/report-status',
+		type : 'GET',
+		dataType : 'json',
+		contentType: "application/json; charset=utf-8",
+	  
+		success : function(respuesta) {
+                    
+			console.log(respuesta);
+			$("#TablaP").empty();
+			var Tablaprin = '<table id= "customers">';
+			Tablaprin += '<thead>'
+			Tablaprin += '<tr>';
+			Tablaprin += '<th> Completed </th>';
+			Tablaprin += '<th> Cancelled </th>';
+			Tablaprin += '</tr>';
+			Tablaprin += '</thead>';		
+				Tablaprin += '<tbody>';
+				Tablaprin += '<tr>';
+				Tablaprin += '<td>'+ respuesta.completed+ '</td>';
+                                Tablaprin += '<td>'+ respuesta.cancelled+ '</td>';						 						 
+				Tablaprin += '</tr>';
+				Tablaprin += '</tbody>';
+			Tablaprin += '</table>';
+			$("#TablaP").append(Tablaprin);
+                        
+		}
+	});
+ }
+
+function Cargar2(){
+	$.ajax({    
+		url : 'http://150.136.61.110:8080/api/Reservation/report-dates/2020-01-01/2020-12-31',
+		type : 'GET',
+		dataType : 'json',
+		contentType: "application/json; charset=utf-8",
+	  
+		success : function(respuesta) {
+			console.log(respuesta);
+			$("#TablaP").empty();
+			var Tablaprin = '<table id= "customers">';
+			Tablaprin += '<thead>'
+			Tablaprin += '<tr>';
+			Tablaprin += '<th> ID </th>';
+			Tablaprin += '<th> FECHA INICIO </th>';
+			Tablaprin += '<th> FECHA DEVOLUCION </th>';
+			Tablaprin += '</tr>';
+			Tablaprin += '</thead>';
+			for (i=0; i<respuesta.length; i++){
+				Tablaprin += '<tbody>';
+				Tablaprin += '<tr>';
+				Tablaprin += '<td>'+ respuesta[i].idReservation+ '</td>';
+                                Tablaprin += '<td>'+ respuesta[i].startDate+ '</td>';						 						 
+				Tablaprin += '<td>'+ respuesta[i].devolutionDate+ '</td>';	
+				Tablaprin += '</tr>';
+				Tablaprin += '</tbody>';
+			}
+			Tablaprin += '</table>';
+			$("#TablaP").append(Tablaprin);
+		}
+	});
+    }
+function Cargar3(){
+	$.ajax({    		  
+		url : 'http://150.136.61.110:8080/api/Reservation/report-clients',
+		type : 'GET',
+		dataType : 'json',
+		contentType: "application/json; charset=utf-8",
+	  
+		success : function(respuesta) {
+			console.log(respuesta);
+			$("#TablaP").empty();
+			var Tablaprin = '<table id= "customers">';
+			Tablaprin += '<thead>'
+			Tablaprin += '<tr>';
+			Tablaprin += '<th> TOTAL RESERVAS </th>';
+			Tablaprin += '<th> ID </th>';
+                        Tablaprin += '<th> CORREO </th>';
+                        Tablaprin += '<th> CONTRASEÑA </th>';
+			Tablaprin += '<th> NOMBRE </th>';
+			Tablaprin += '<th> EDAD </th>';
+			Tablaprin += '</tr>';
+			Tablaprin += '</thead>';
+			for (i=0; i<respuesta.length; i++){
+				Tablaprin += '<tbody>';
+				Tablaprin += '<tr>';
+                                Tablaprin += '<td>'+ respuesta[i].total+ '</td>';
+				Tablaprin += '<td>'+ respuesta[i].client.idClient+ '</td>';
+				Tablaprin += '<td>'+ respuesta[i].client.email+ '</td>'; 		
+				Tablaprin += '<td>'+ respuesta[i].client.password+ '</td>'; 		
+				Tablaprin += '<td>'+ respuesta[i].client.name+ '</td>'; 		 		
+				Tablaprin += '<td>'+ respuesta[i].client.age+ '</td>'; 		 
+				Tablaprin += '</tr>';	
+				Tablaprin += '</tbody>';
+			}
+			Tablaprin += '</table>';
+			$("#TablaP").append(Tablaprin);
+		},
+	});
+}
+
 function limpiarCamposRes(){
         $("#idReservation").val(''),
         $("#startDate").val(''),
         $("#devolutionDate").val('')
-//        $("#partyroom").val(''),
-//        $("#client").val(''),
-//        $("#score").val('')
 }
 
-//METODOS GET POST PUT Y DELETE DE LA TABLA ADMIN
+//METODOS ADMIN
 function CargarAdm(){
 	$.ajax({    
 		url : 'http://144.22.58.129:8080/api/Admin/all',
@@ -787,7 +861,6 @@ function CargarScore(){
 			Tablaprin += '<th> ID </th>';
 			Tablaprin += '<th> PUNTAJE </th>';
 			Tablaprin += '<th> MENSAJE </th>';
-//			Tablaprin += '<th> RESERVA </th>';
 			Tablaprin += '</tr>';
 			Tablaprin += '</thead>';
 			for (i=0; i<respuesta.length; i++){
@@ -796,8 +869,6 @@ function CargarScore(){
 				Tablaprin += '<td>'+ respuesta[i].idScore+ '</td>';
 				Tablaprin += '<td>'+ respuesta[i].calificacion+ '</td>';
                                 Tablaprin += '<td>'+ respuesta[i].mensaje+ '</td>';						 						 
-//				Tablaprin += '<td>'+ respuesta[i].reserva+ '</td>';
-//				Tablaprin += '<td><button onclick="editarRegistroScore('+respuesta[i].idScore+')">Detalle</button>';
 				Tablaprin += '<td><button onclick="eliminarScore('+respuesta[i].idScore+')">Eliminar</button>';	
 				Tablaprin += '</tr>';
 				Tablaprin += '</tbody>';
@@ -812,8 +883,7 @@ function ingresarDatosScore(){
 	var datos={
 		idScore:$("#idScore").val(),		
 		calificacion:$("#calificacion").val(),		
-		mensaje:$("#mensaje").val(),
-//                reserva:$("#reserva").val()
+		mensaje:$("#mensaje").val()
 	};
 	if (datos.mensaje=='' || datos.reserva=='' || datos.calificacion==''){
 		alert("Todos los campos son obligatorios");
@@ -850,7 +920,6 @@ function editarRegistroScore (idScore){
 			$("#idScore").val(respuesta.idScore);		
 			$("#calificacion").val(respuesta.calificacion);		
 			$("#mensaje").val(respuesta.mensaje);
-//			$("#reserva").val(respuesta.reserva);
 			$("#idAdmin").attr('disabled', true);
 	},
     error : function(xhr, status) {
@@ -863,7 +932,6 @@ function actualizarScore(){
 		idScore:$("#idScore").val(),		
 		calificacion:$("#calificacion").val(),		
 		mensaje:$("#mensaje").val()
-//                reserva:$("#reserva").val()
 	};
 	if (datos.mensaje=='' || datos.reserva=='' || datos.calificacion==''){
 		alert("Todos los campos son obligatorios");
@@ -905,14 +973,4 @@ function limpiarCamposScore(){
         $("#idScore").val(''),
         $("#calificacion").val(''),
         $("#mensaje").val('')
-//        $("#reserva").val('')
 }
-
-//            <select name="category" id="category" placeholder="category_id">
-//            </select>
-//<input class= "tamañoceldas" type="number" id="category" placeholder="category"> toca ponerlo ahorita
-//            <input class= "tamañoceldas" type="number" id="id" placeholder="id"> solo por si acaso
-
-//para poner en message ahorita
-//<input class= "tamañoceldas" type="number" id="partyroom" placeholder="partyroom">
-//<input class= "tamañoceldas" type="number" id="client" placeholder="client">

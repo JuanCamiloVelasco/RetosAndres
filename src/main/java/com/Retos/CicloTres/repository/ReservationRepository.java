@@ -5,8 +5,12 @@
  */
 package com.Retos.CicloTres.repository;
 
+import com.Retos.CicloTres.model.Client;
 import com.Retos.CicloTres.model.Reservation;
+import com.Retos.CicloTres.reportes.ConteoClientes;
 import com.Retos.CicloTres.repository.crud.ReservationCrudRepository;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +32,19 @@ public class ReservationRepository {
     }
     public void delete(Reservation reserva){
         reservationCrudRepository.delete(reserva);
+    }
+    public List<Reservation> getReservationByStatus(String status){        
+        return reservationCrudRepository.findAllByStatus(status);
+    }
+    public List<Reservation> getReservationPeriod(Date a, Date b){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a, b);
+    }
+    public List<ConteoClientes> getTopClients(){
+        List<ConteoClientes> res = new ArrayList<>();
+        List<Object[]> report = reservationCrudRepository.countTotalReservationByClient();
+        for(int i=0;i<report.size();i++){
+            res.add(new ConteoClientes((Long)report.get(i)[1],(Client) report.get(i)[0]));
+        }
+        return res;
     }
 }
